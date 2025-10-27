@@ -7,9 +7,9 @@ part 'biography_model.g.dart';
 @freezed
 abstract class BiographyModel with _$BiographyModel {
   const factory BiographyModel({
-    required String fullName,
-    required String publisher,
-    required String alignment,
+    String? fullName,
+    String? publisher,
+    String? alignment,
   }) = _BiographyModel;
 
   factory BiographyModel.fromJson(Map<String, dynamic> json) =>
@@ -19,9 +19,9 @@ abstract class BiographyModel with _$BiographyModel {
 extension BiographyModelX on BiographyModel {
   BiographyEntity toEntity() {
     return BiographyEntity(
-      fullName: fullName,
-      publisher: publisher,
-      alignment: alignment,
+      fullName: fullName ?? '-',
+      publisher: publisher ?? 'N/A',
+      alignment: alignment ?? '-',
     );
   }
 }

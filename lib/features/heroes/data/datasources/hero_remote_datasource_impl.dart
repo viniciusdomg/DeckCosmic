@@ -14,12 +14,16 @@ class HeroRemoteDataSourceImpl implements IHeroRemoteDataSource {
   final String _endpoint = '/hero';
 
   @override
-  Future<List<HeroModel>> getAllHeroes() async {
+  Future<List<HeroModel>> getAllHeroes({required int page, required int limit}) async {
     try {
-      final response = await dio.get(_endpoint);
+      final String url = '$_endpoint?_page=${page}_per_page=$limit';
 
-      if (response.statusCode == 200) {
-        final List<dynamic> jsonList = response.data as List;
+      final response = await dio.get(url);
+
+      if (response.statusCode == 200 && response.data != null) {
+
+        final List<dynamic> jsonList = response.data['data'] as List;
+
         final heroModels = jsonList
             .map((json) => HeroModel.fromJson(json as Map<String, dynamic>))
             .toList();
@@ -31,7 +35,7 @@ class HeroRemoteDataSourceImpl implements IHeroRemoteDataSource {
     } on DioException catch (e) {
       throw ServerException(e.message ?? 'Erro de rede');
     } catch (e) {
-      throw CacheException(e.toString());
+      throw ServerException(e.toString());
     }
   }
 }

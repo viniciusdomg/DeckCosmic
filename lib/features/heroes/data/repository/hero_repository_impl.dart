@@ -16,9 +16,9 @@ class HeroRepositoryImpl implements IHeroRepository {
   });
 
   @override
-  Future<List<HeroEntity>> getAllHeroes() async {
+  Future<List<HeroEntity>> getAllHeroes({required int page, required int limit}) async {
     try {
-      final heroModels = await remoteDataSource.getAllHeroes();
+      final heroModels = await remoteDataSource.getAllHeroes(page: page, limit: limit);
 
       // 2. Se conseguir, salva no cache local (SQFlite)
       // (Implementaremos o localDataSource depois, mas a chamada já fica aqui)

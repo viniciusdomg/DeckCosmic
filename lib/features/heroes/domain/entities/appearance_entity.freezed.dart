@@ -14,9 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppearanceEntity {
 
- String get gender; String get race; String get height;// <-- Note que é só uma String limpa
- String get weight;// <-- Note que é só uma String limpa
- String get eyeColor; String get hairColor;
+ String get gender; String get race; String get height; String get weight; String get eyeColor; String get hairColor;
 /// Create a copy of AppearanceEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -219,9 +217,7 @@ class _AppearanceEntity implements AppearanceEntity {
 @override final  String gender;
 @override final  String race;
 @override final  String height;
-// <-- Note que é só uma String limpa
 @override final  String weight;
-// <-- Note que é só uma String limpa
 @override final  String eyeColor;
 @override final  String hairColor;
 

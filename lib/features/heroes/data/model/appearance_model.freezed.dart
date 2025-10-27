@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppearanceModel {
 
- String get gender; String get race; List<String> get height; List<String> get weight; String get eyeColor; String get hairColor;
+ String? get gender; String? get race; List<String> get height; List<String> get weight; String? get eyeColor; String? get hairColor;
 /// Create a copy of AppearanceModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $AppearanceModelCopyWith<$Res>  {
   factory $AppearanceModelCopyWith(AppearanceModel value, $Res Function(AppearanceModel) _then) = _$AppearanceModelCopyWithImpl;
 @useResult
 $Res call({
- String gender, String race, List<String> height, List<String> weight, String eyeColor, String hairColor
+ String? gender, String? race, List<String> height, List<String> weight, String? eyeColor, String? hairColor
 });
 
 
@@ -65,15 +65,15 @@ class _$AppearanceModelCopyWithImpl<$Res>
 
 /// Create a copy of AppearanceModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? gender = null,Object? race = null,Object? height = null,Object? weight = null,Object? eyeColor = null,Object? hairColor = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? gender = freezed,Object? race = freezed,Object? height = null,Object? weight = null,Object? eyeColor = freezed,Object? hairColor = freezed,}) {
   return _then(_self.copyWith(
-gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as String,race: null == race ? _self.race : race // ignore: cast_nullable_to_non_nullable
-as String,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
+as String?,race: freezed == race ? _self.race : race // ignore: cast_nullable_to_non_nullable
+as String?,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
 as List<String>,weight: null == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
-as List<String>,eyeColor: null == eyeColor ? _self.eyeColor : eyeColor // ignore: cast_nullable_to_non_nullable
-as String,hairColor: null == hairColor ? _self.hairColor : hairColor // ignore: cast_nullable_to_non_nullable
-as String,
+as List<String>,eyeColor: freezed == eyeColor ? _self.eyeColor : eyeColor // ignore: cast_nullable_to_non_nullable
+as String?,hairColor: freezed == hairColor ? _self.hairColor : hairColor // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -158,7 +158,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String gender,  String race,  List<String> height,  List<String> weight,  String eyeColor,  String hairColor)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? gender,  String? race,  List<String> height,  List<String> weight,  String? eyeColor,  String? hairColor)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppearanceModel() when $default != null:
 return $default(_that.gender,_that.race,_that.height,_that.weight,_that.eyeColor,_that.hairColor);case _:
@@ -179,7 +179,7 @@ return $default(_that.gender,_that.race,_that.height,_that.weight,_that.eyeColor
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String gender,  String race,  List<String> height,  List<String> weight,  String eyeColor,  String hairColor)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? gender,  String? race,  List<String> height,  List<String> weight,  String? eyeColor,  String? hairColor)  $default,) {final _that = this;
 switch (_that) {
 case _AppearanceModel():
 return $default(_that.gender,_that.race,_that.height,_that.weight,_that.eyeColor,_that.hairColor);case _:
@@ -199,7 +199,7 @@ return $default(_that.gender,_that.race,_that.height,_that.weight,_that.eyeColor
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String gender,  String race,  List<String> height,  List<String> weight,  String eyeColor,  String hairColor)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? gender,  String? race,  List<String> height,  List<String> weight,  String? eyeColor,  String? hairColor)?  $default,) {final _that = this;
 switch (_that) {
 case _AppearanceModel() when $default != null:
 return $default(_that.gender,_that.race,_that.height,_that.weight,_that.eyeColor,_that.hairColor);case _:
@@ -214,11 +214,11 @@ return $default(_that.gender,_that.race,_that.height,_that.weight,_that.eyeColor
 @JsonSerializable()
 
 class _AppearanceModel implements AppearanceModel {
-  const _AppearanceModel({required this.gender, required this.race, required final  List<String> height, required final  List<String> weight, required this.eyeColor, required this.hairColor}): _height = height,_weight = weight;
+  const _AppearanceModel({this.gender, this.race, required final  List<String> height, required final  List<String> weight, this.eyeColor, this.hairColor}): _height = height,_weight = weight;
   factory _AppearanceModel.fromJson(Map<String, dynamic> json) => _$AppearanceModelFromJson(json);
 
-@override final  String gender;
-@override final  String race;
+@override final  String? gender;
+@override final  String? race;
  final  List<String> _height;
 @override List<String> get height {
   if (_height is EqualUnmodifiableListView) return _height;
@@ -233,8 +233,8 @@ class _AppearanceModel implements AppearanceModel {
   return EqualUnmodifiableListView(_weight);
 }
 
-@override final  String eyeColor;
-@override final  String hairColor;
+@override final  String? eyeColor;
+@override final  String? hairColor;
 
 /// Create a copy of AppearanceModel
 /// with the given fields replaced by the non-null parameter values.
@@ -269,7 +269,7 @@ abstract mixin class _$AppearanceModelCopyWith<$Res> implements $AppearanceModel
   factory _$AppearanceModelCopyWith(_AppearanceModel value, $Res Function(_AppearanceModel) _then) = __$AppearanceModelCopyWithImpl;
 @override @useResult
 $Res call({
- String gender, String race, List<String> height, List<String> weight, String eyeColor, String hairColor
+ String? gender, String? race, List<String> height, List<String> weight, String? eyeColor, String? hairColor
 });
 
 
@@ -286,15 +286,15 @@ class __$AppearanceModelCopyWithImpl<$Res>
 
 /// Create a copy of AppearanceModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? gender = null,Object? race = null,Object? height = null,Object? weight = null,Object? eyeColor = null,Object? hairColor = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? gender = freezed,Object? race = freezed,Object? height = null,Object? weight = null,Object? eyeColor = freezed,Object? hairColor = freezed,}) {
   return _then(_AppearanceModel(
-gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as String,race: null == race ? _self.race : race // ignore: cast_nullable_to_non_nullable
-as String,height: null == height ? _self._height : height // ignore: cast_nullable_to_non_nullable
+gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
+as String?,race: freezed == race ? _self.race : race // ignore: cast_nullable_to_non_nullable
+as String?,height: null == height ? _self._height : height // ignore: cast_nullable_to_non_nullable
 as List<String>,weight: null == weight ? _self._weight : weight // ignore: cast_nullable_to_non_nullable
-as List<String>,eyeColor: null == eyeColor ? _self.eyeColor : eyeColor // ignore: cast_nullable_to_non_nullable
-as String,hairColor: null == hairColor ? _self.hairColor : hairColor // ignore: cast_nullable_to_non_nullable
-as String,
+as List<String>,eyeColor: freezed == eyeColor ? _self.eyeColor : eyeColor // ignore: cast_nullable_to_non_nullable
+as String?,hairColor: freezed == hairColor ? _self.hairColor : hairColor // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

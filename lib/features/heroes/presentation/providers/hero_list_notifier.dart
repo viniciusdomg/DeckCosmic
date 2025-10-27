@@ -26,7 +26,7 @@ class HeroListNotifier extends ChangeNotifier {
       // AQUI ESTÁ A CHAMADA!
       // O Notifier não sabe se vem da API ou do Cache.
       // Ele só pede para o Repositório.
-      _heroes = await heroRepository.getAllHeroes();
+      // _heroes = await heroRepository.getAllHeroes();
 
       _hasFetched = true;
     } catch (e) {

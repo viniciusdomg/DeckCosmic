@@ -28,7 +28,7 @@ void setupLocator() {
   getIt.registerLazySingleton<IHeroRepository>(
         () => HeroRepositoryImpl(
       remoteDataSource: getIt(),
-      localDataSource: getIt(), // (Isso vai funcionar quando registrarmos o local)
+      localDataSource: getIt(),
     ),
   );
 
@@ -43,11 +43,10 @@ void setupLocator() {
         () => MockHeroLocalDataSourceImpl(),
   );
 
-  // 4. EXTERNAL (Dependências externas)
-  // Registramos o Dio como um singleton.
+
   getIt.registerLazySingleton<Dio>(
         () => Dio(BaseOptions(
-      baseUrl: 'http://localhost:3000', // A URL base do seu json-server
+      baseUrl: 'http://10.0.2.2:3000',
     )),
   );
 }

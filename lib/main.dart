@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         title: 'Deck Cosmic',
         theme: theme.light(),
         darkTheme: theme.dark(),
-        home: const MainNavigation(initialIndex: 0),
+        home: const MainNavigation(initialIndex: 1),
       ),
     );
   }

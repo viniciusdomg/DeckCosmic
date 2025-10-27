@@ -16,10 +16,10 @@ class _MainNavigationState extends State<MainNavigation> {
   late int _selectedIndex;
 
   final List<Widget> _pages = [
-    const HeroDay(),
-    const Battlefield(),
     const HeroesList(),
-    const MyHeroesList()
+    const HeroDay(),
+    const MyHeroesList(),
+    const Battlefield()
   ];
 
   @override
@@ -28,7 +28,7 @@ class _MainNavigationState extends State<MainNavigation> {
     _selectedIndex = widget.initialIndex;
   }
 
-  void onItemTapped(int index){
+  void _onItemTapped(int index){
     setState(() {
       _selectedIndex = index;
     });
@@ -38,7 +38,40 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("DeckCosmic"),
+      ),
+      
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _pages,
+      ),
 
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shield),
+            label: 'Heróis',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Card Diário',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.style),
+            label: 'Minhas Cartas',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bolt),
+            label: 'Batalhar',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+      ),
     );
   }
 }
