@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BiographyEntity {
 
- String get fullName; String get publisher; String get alignment;
+ String get fullName; String get placeOfBirth; String get firstAppearance; String get publisher; String get alignment;
 /// Create a copy of BiographyEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $BiographyEntityCopyWith<BiographyEntity> get copyWith => _$BiographyEntityCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiographyEntity&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiographyEntity&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.placeOfBirth, placeOfBirth) || other.placeOfBirth == placeOfBirth)&&(identical(other.firstAppearance, firstAppearance) || other.firstAppearance == firstAppearance)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fullName,publisher,alignment);
+int get hashCode => Object.hash(runtimeType,fullName,placeOfBirth,firstAppearance,publisher,alignment);
 
 @override
 String toString() {
-  return 'BiographyEntity(fullName: $fullName, publisher: $publisher, alignment: $alignment)';
+  return 'BiographyEntity(fullName: $fullName, placeOfBirth: $placeOfBirth, firstAppearance: $firstAppearance, publisher: $publisher, alignment: $alignment)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $BiographyEntityCopyWith<$Res>  {
   factory $BiographyEntityCopyWith(BiographyEntity value, $Res Function(BiographyEntity) _then) = _$BiographyEntityCopyWithImpl;
 @useResult
 $Res call({
- String fullName, String publisher, String alignment
+ String fullName, String placeOfBirth, String firstAppearance, String publisher, String alignment
 });
 
 
@@ -62,9 +62,11 @@ class _$BiographyEntityCopyWithImpl<$Res>
 
 /// Create a copy of BiographyEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? publisher = null,Object? alignment = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? placeOfBirth = null,Object? firstAppearance = null,Object? publisher = null,Object? alignment = null,}) {
   return _then(_self.copyWith(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String,placeOfBirth: null == placeOfBirth ? _self.placeOfBirth : placeOfBirth // ignore: cast_nullable_to_non_nullable
+as String,firstAppearance: null == firstAppearance ? _self.firstAppearance : firstAppearance // ignore: cast_nullable_to_non_nullable
 as String,publisher: null == publisher ? _self.publisher : publisher // ignore: cast_nullable_to_non_nullable
 as String,alignment: null == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
 as String,
@@ -152,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String publisher,  String alignment)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String placeOfBirth,  String firstAppearance,  String publisher,  String alignment)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BiographyEntity() when $default != null:
-return $default(_that.fullName,_that.publisher,_that.alignment);case _:
+return $default(_that.fullName,_that.placeOfBirth,_that.firstAppearance,_that.publisher,_that.alignment);case _:
   return orElse();
 
 }
@@ -173,10 +175,10 @@ return $default(_that.fullName,_that.publisher,_that.alignment);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String publisher,  String alignment)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String placeOfBirth,  String firstAppearance,  String publisher,  String alignment)  $default,) {final _that = this;
 switch (_that) {
 case _BiographyEntity():
-return $default(_that.fullName,_that.publisher,_that.alignment);case _:
+return $default(_that.fullName,_that.placeOfBirth,_that.firstAppearance,_that.publisher,_that.alignment);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -193,10 +195,10 @@ return $default(_that.fullName,_that.publisher,_that.alignment);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String publisher,  String alignment)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String placeOfBirth,  String firstAppearance,  String publisher,  String alignment)?  $default,) {final _that = this;
 switch (_that) {
 case _BiographyEntity() when $default != null:
-return $default(_that.fullName,_that.publisher,_that.alignment);case _:
+return $default(_that.fullName,_that.placeOfBirth,_that.firstAppearance,_that.publisher,_that.alignment);case _:
   return null;
 
 }
@@ -208,10 +210,12 @@ return $default(_that.fullName,_that.publisher,_that.alignment);case _:
 
 
 class _BiographyEntity implements BiographyEntity {
-  const _BiographyEntity({required this.fullName, required this.publisher, required this.alignment});
+  const _BiographyEntity({required this.fullName, required this.placeOfBirth, required this.firstAppearance, required this.publisher, required this.alignment});
   
 
 @override final  String fullName;
+@override final  String placeOfBirth;
+@override final  String firstAppearance;
 @override final  String publisher;
 @override final  String alignment;
 
@@ -225,16 +229,16 @@ _$BiographyEntityCopyWith<_BiographyEntity> get copyWith => __$BiographyEntityCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiographyEntity&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiographyEntity&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.placeOfBirth, placeOfBirth) || other.placeOfBirth == placeOfBirth)&&(identical(other.firstAppearance, firstAppearance) || other.firstAppearance == firstAppearance)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fullName,publisher,alignment);
+int get hashCode => Object.hash(runtimeType,fullName,placeOfBirth,firstAppearance,publisher,alignment);
 
 @override
 String toString() {
-  return 'BiographyEntity(fullName: $fullName, publisher: $publisher, alignment: $alignment)';
+  return 'BiographyEntity(fullName: $fullName, placeOfBirth: $placeOfBirth, firstAppearance: $firstAppearance, publisher: $publisher, alignment: $alignment)';
 }
 
 
@@ -245,7 +249,7 @@ abstract mixin class _$BiographyEntityCopyWith<$Res> implements $BiographyEntity
   factory _$BiographyEntityCopyWith(_BiographyEntity value, $Res Function(_BiographyEntity) _then) = __$BiographyEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String fullName, String publisher, String alignment
+ String fullName, String placeOfBirth, String firstAppearance, String publisher, String alignment
 });
 
 
@@ -262,9 +266,11 @@ class __$BiographyEntityCopyWithImpl<$Res>
 
 /// Create a copy of BiographyEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? publisher = null,Object? alignment = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? placeOfBirth = null,Object? firstAppearance = null,Object? publisher = null,Object? alignment = null,}) {
   return _then(_BiographyEntity(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String,placeOfBirth: null == placeOfBirth ? _self.placeOfBirth : placeOfBirth // ignore: cast_nullable_to_non_nullable
+as String,firstAppearance: null == firstAppearance ? _self.firstAppearance : firstAppearance // ignore: cast_nullable_to_non_nullable
 as String,publisher: null == publisher ? _self.publisher : publisher // ignore: cast_nullable_to_non_nullable
 as String,alignment: null == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
 as String,

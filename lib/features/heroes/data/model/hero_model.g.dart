@@ -16,6 +16,10 @@ _HeroModel _$HeroModelFromJson(Map<String, dynamic> json) => _HeroModel(
     json['appearance'] as Map<String, dynamic>,
   ),
   biography: BiographyModel.fromJson(json['biography'] as Map<String, dynamic>),
+  work: WorkModel.fromJson(json['work'] as Map<String, dynamic>),
+  connections: ConnectionsModel.fromJson(
+    json['connections'] as Map<String, dynamic>,
+  ),
   images: HeroImagesModel.fromJson(json['images'] as Map<String, dynamic>),
 );
 
@@ -26,5 +30,7 @@ Map<String, dynamic> _$HeroModelToJson(_HeroModel instance) =>
       'powerstats': instance.powerstats,
       'appearance': instance.appearance,
       'biography': instance.biography,
+      'work': instance.work,
+      'connections': instance.connections,
       'images': instance.images,
     };

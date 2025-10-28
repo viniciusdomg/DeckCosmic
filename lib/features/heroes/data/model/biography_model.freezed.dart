@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BiographyModel {
 
- String? get fullName; String? get publisher; String? get alignment;
+ String? get fullName; String? get placeOfBirth; String? get firstAppearance; String? get publisher; String? get alignment;
 /// Create a copy of BiographyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $BiographyModelCopyWith<BiographyModel> get copyWith => _$BiographyModelCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiographyModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiographyModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.placeOfBirth, placeOfBirth) || other.placeOfBirth == placeOfBirth)&&(identical(other.firstAppearance, firstAppearance) || other.firstAppearance == firstAppearance)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,fullName,publisher,alignment);
+int get hashCode => Object.hash(runtimeType,fullName,placeOfBirth,firstAppearance,publisher,alignment);
 
 @override
 String toString() {
-  return 'BiographyModel(fullName: $fullName, publisher: $publisher, alignment: $alignment)';
+  return 'BiographyModel(fullName: $fullName, placeOfBirth: $placeOfBirth, firstAppearance: $firstAppearance, publisher: $publisher, alignment: $alignment)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $BiographyModelCopyWith<$Res>  {
   factory $BiographyModelCopyWith(BiographyModel value, $Res Function(BiographyModel) _then) = _$BiographyModelCopyWithImpl;
 @useResult
 $Res call({
- String? fullName, String? publisher, String? alignment
+ String? fullName, String? placeOfBirth, String? firstAppearance, String? publisher, String? alignment
 });
 
 
@@ -65,9 +65,11 @@ class _$BiographyModelCopyWithImpl<$Res>
 
 /// Create a copy of BiographyModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? fullName = freezed,Object? publisher = freezed,Object? alignment = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? fullName = freezed,Object? placeOfBirth = freezed,Object? firstAppearance = freezed,Object? publisher = freezed,Object? alignment = freezed,}) {
   return _then(_self.copyWith(
 fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String?,placeOfBirth: freezed == placeOfBirth ? _self.placeOfBirth : placeOfBirth // ignore: cast_nullable_to_non_nullable
+as String?,firstAppearance: freezed == firstAppearance ? _self.firstAppearance : firstAppearance // ignore: cast_nullable_to_non_nullable
 as String?,publisher: freezed == publisher ? _self.publisher : publisher // ignore: cast_nullable_to_non_nullable
 as String?,alignment: freezed == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -155,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? fullName,  String? publisher,  String? alignment)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? fullName,  String? placeOfBirth,  String? firstAppearance,  String? publisher,  String? alignment)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BiographyModel() when $default != null:
-return $default(_that.fullName,_that.publisher,_that.alignment);case _:
+return $default(_that.fullName,_that.placeOfBirth,_that.firstAppearance,_that.publisher,_that.alignment);case _:
   return orElse();
 
 }
@@ -176,10 +178,10 @@ return $default(_that.fullName,_that.publisher,_that.alignment);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? fullName,  String? publisher,  String? alignment)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? fullName,  String? placeOfBirth,  String? firstAppearance,  String? publisher,  String? alignment)  $default,) {final _that = this;
 switch (_that) {
 case _BiographyModel():
-return $default(_that.fullName,_that.publisher,_that.alignment);case _:
+return $default(_that.fullName,_that.placeOfBirth,_that.firstAppearance,_that.publisher,_that.alignment);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +198,10 @@ return $default(_that.fullName,_that.publisher,_that.alignment);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? fullName,  String? publisher,  String? alignment)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? fullName,  String? placeOfBirth,  String? firstAppearance,  String? publisher,  String? alignment)?  $default,) {final _that = this;
 switch (_that) {
 case _BiographyModel() when $default != null:
-return $default(_that.fullName,_that.publisher,_that.alignment);case _:
+return $default(_that.fullName,_that.placeOfBirth,_that.firstAppearance,_that.publisher,_that.alignment);case _:
   return null;
 
 }
@@ -211,10 +213,12 @@ return $default(_that.fullName,_that.publisher,_that.alignment);case _:
 @JsonSerializable()
 
 class _BiographyModel implements BiographyModel {
-  const _BiographyModel({this.fullName, this.publisher, this.alignment});
+  const _BiographyModel({this.fullName, this.placeOfBirth, this.firstAppearance, this.publisher, this.alignment});
   factory _BiographyModel.fromJson(Map<String, dynamic> json) => _$BiographyModelFromJson(json);
 
 @override final  String? fullName;
+@override final  String? placeOfBirth;
+@override final  String? firstAppearance;
 @override final  String? publisher;
 @override final  String? alignment;
 
@@ -231,16 +235,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiographyModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiographyModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.placeOfBirth, placeOfBirth) || other.placeOfBirth == placeOfBirth)&&(identical(other.firstAppearance, firstAppearance) || other.firstAppearance == firstAppearance)&&(identical(other.publisher, publisher) || other.publisher == publisher)&&(identical(other.alignment, alignment) || other.alignment == alignment));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,fullName,publisher,alignment);
+int get hashCode => Object.hash(runtimeType,fullName,placeOfBirth,firstAppearance,publisher,alignment);
 
 @override
 String toString() {
-  return 'BiographyModel(fullName: $fullName, publisher: $publisher, alignment: $alignment)';
+  return 'BiographyModel(fullName: $fullName, placeOfBirth: $placeOfBirth, firstAppearance: $firstAppearance, publisher: $publisher, alignment: $alignment)';
 }
 
 
@@ -251,7 +255,7 @@ abstract mixin class _$BiographyModelCopyWith<$Res> implements $BiographyModelCo
   factory _$BiographyModelCopyWith(_BiographyModel value, $Res Function(_BiographyModel) _then) = __$BiographyModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? fullName, String? publisher, String? alignment
+ String? fullName, String? placeOfBirth, String? firstAppearance, String? publisher, String? alignment
 });
 
 
@@ -268,9 +272,11 @@ class __$BiographyModelCopyWithImpl<$Res>
 
 /// Create a copy of BiographyModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? fullName = freezed,Object? publisher = freezed,Object? alignment = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? fullName = freezed,Object? placeOfBirth = freezed,Object? firstAppearance = freezed,Object? publisher = freezed,Object? alignment = freezed,}) {
   return _then(_BiographyModel(
 fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String?,placeOfBirth: freezed == placeOfBirth ? _self.placeOfBirth : placeOfBirth // ignore: cast_nullable_to_non_nullable
+as String?,firstAppearance: freezed == firstAppearance ? _self.firstAppearance : firstAppearance // ignore: cast_nullable_to_non_nullable
 as String?,publisher: freezed == publisher ? _self.publisher : publisher // ignore: cast_nullable_to_non_nullable
 as String?,alignment: freezed == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
 as String?,

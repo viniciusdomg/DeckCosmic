@@ -6,6 +6,8 @@ part 'biography_entity.freezed.dart';
 abstract class BiographyEntity with _$BiographyEntity {
   const factory BiographyEntity({
     required String fullName,
+    required String placeOfBirth,
+    required String firstAppearance,
     required String publisher,
     required String alignment,
   }) = _BiographyEntity;

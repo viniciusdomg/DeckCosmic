@@ -9,6 +9,8 @@ part of 'biography_model.dart';
 _BiographyModel _$BiographyModelFromJson(Map<String, dynamic> json) =>
     _BiographyModel(
       fullName: json['fullName'] as String?,
+      placeOfBirth: json['placeOfBirth'] as String?,
+      firstAppearance: json['firstAppearance'] as String?,
       publisher: json['publisher'] as String?,
       alignment: json['alignment'] as String?,
     );
@@ -16,6 +18,8 @@ _BiographyModel _$BiographyModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$BiographyModelToJson(_BiographyModel instance) =>
     <String, dynamic>{
       'fullName': instance.fullName,
+      'placeOfBirth': instance.placeOfBirth,
+      'firstAppearance': instance.firstAppearance,
       'publisher': instance.publisher,
       'alignment': instance.alignment,
     };

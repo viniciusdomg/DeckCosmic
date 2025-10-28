@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HeroModel {
 
- String get id; String get name; PowerstatsModel get powerstats; AppearanceModel get appearance; BiographyModel get biography; HeroImagesModel get images;
+ String get id; String get name; PowerstatsModel get powerstats; AppearanceModel get appearance; BiographyModel get biography; WorkModel get work; ConnectionsModel get connections; HeroImagesModel get images;
 /// Create a copy of HeroModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $HeroModelCopyWith<HeroModel> get copyWith => _$HeroModelCopyWithImpl<HeroModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HeroModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.powerstats, powerstats) || other.powerstats == powerstats)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.biography, biography) || other.biography == biography)&&(identical(other.images, images) || other.images == images));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HeroModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.powerstats, powerstats) || other.powerstats == powerstats)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.biography, biography) || other.biography == biography)&&(identical(other.work, work) || other.work == work)&&(identical(other.connections, connections) || other.connections == connections)&&(identical(other.images, images) || other.images == images));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,powerstats,appearance,biography,images);
+int get hashCode => Object.hash(runtimeType,id,name,powerstats,appearance,biography,work,connections,images);
 
 @override
 String toString() {
-  return 'HeroModel(id: $id, name: $name, powerstats: $powerstats, appearance: $appearance, biography: $biography, images: $images)';
+  return 'HeroModel(id: $id, name: $name, powerstats: $powerstats, appearance: $appearance, biography: $biography, work: $work, connections: $connections, images: $images)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $HeroModelCopyWith<$Res>  {
   factory $HeroModelCopyWith(HeroModel value, $Res Function(HeroModel) _then) = _$HeroModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, PowerstatsModel powerstats, AppearanceModel appearance, BiographyModel biography, HeroImagesModel images
+ String id, String name, PowerstatsModel powerstats, AppearanceModel appearance, BiographyModel biography, WorkModel work, ConnectionsModel connections, HeroImagesModel images
 });
 
 
-$PowerstatsModelCopyWith<$Res> get powerstats;$AppearanceModelCopyWith<$Res> get appearance;$BiographyModelCopyWith<$Res> get biography;$HeroImagesModelCopyWith<$Res> get images;
+$PowerstatsModelCopyWith<$Res> get powerstats;$AppearanceModelCopyWith<$Res> get appearance;$BiographyModelCopyWith<$Res> get biography;$WorkModelCopyWith<$Res> get work;$ConnectionsModelCopyWith<$Res> get connections;$HeroImagesModelCopyWith<$Res> get images;
 
 }
 /// @nodoc
@@ -65,14 +65,16 @@ class _$HeroModelCopyWithImpl<$Res>
 
 /// Create a copy of HeroModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? powerstats = null,Object? appearance = null,Object? biography = null,Object? images = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? powerstats = null,Object? appearance = null,Object? biography = null,Object? work = null,Object? connections = null,Object? images = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,powerstats: null == powerstats ? _self.powerstats : powerstats // ignore: cast_nullable_to_non_nullable
 as PowerstatsModel,appearance: null == appearance ? _self.appearance : appearance // ignore: cast_nullable_to_non_nullable
 as AppearanceModel,biography: null == biography ? _self.biography : biography // ignore: cast_nullable_to_non_nullable
-as BiographyModel,images: null == images ? _self.images : images // ignore: cast_nullable_to_non_nullable
+as BiographyModel,work: null == work ? _self.work : work // ignore: cast_nullable_to_non_nullable
+as WorkModel,connections: null == connections ? _self.connections : connections // ignore: cast_nullable_to_non_nullable
+as ConnectionsModel,images: null == images ? _self.images : images // ignore: cast_nullable_to_non_nullable
 as HeroImagesModel,
   ));
 }
@@ -102,6 +104,24 @@ $BiographyModelCopyWith<$Res> get biography {
   
   return $BiographyModelCopyWith<$Res>(_self.biography, (value) {
     return _then(_self.copyWith(biography: value));
+  });
+}/// Create a copy of HeroModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WorkModelCopyWith<$Res> get work {
+  
+  return $WorkModelCopyWith<$Res>(_self.work, (value) {
+    return _then(_self.copyWith(work: value));
+  });
+}/// Create a copy of HeroModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ConnectionsModelCopyWith<$Res> get connections {
+  
+  return $ConnectionsModelCopyWith<$Res>(_self.connections, (value) {
+    return _then(_self.copyWith(connections: value));
   });
 }/// Create a copy of HeroModel
 /// with the given fields replaced by the non-null parameter values.
@@ -194,10 +214,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  PowerstatsModel powerstats,  AppearanceModel appearance,  BiographyModel biography,  HeroImagesModel images)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  PowerstatsModel powerstats,  AppearanceModel appearance,  BiographyModel biography,  WorkModel work,  ConnectionsModel connections,  HeroImagesModel images)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HeroModel() when $default != null:
-return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biography,_that.images);case _:
+return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biography,_that.work,_that.connections,_that.images);case _:
   return orElse();
 
 }
@@ -215,10 +235,10 @@ return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biog
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  PowerstatsModel powerstats,  AppearanceModel appearance,  BiographyModel biography,  HeroImagesModel images)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  PowerstatsModel powerstats,  AppearanceModel appearance,  BiographyModel biography,  WorkModel work,  ConnectionsModel connections,  HeroImagesModel images)  $default,) {final _that = this;
 switch (_that) {
 case _HeroModel():
-return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biography,_that.images);case _:
+return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biography,_that.work,_that.connections,_that.images);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -235,10 +255,10 @@ return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biog
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  PowerstatsModel powerstats,  AppearanceModel appearance,  BiographyModel biography,  HeroImagesModel images)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  PowerstatsModel powerstats,  AppearanceModel appearance,  BiographyModel biography,  WorkModel work,  ConnectionsModel connections,  HeroImagesModel images)?  $default,) {final _that = this;
 switch (_that) {
 case _HeroModel() when $default != null:
-return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biography,_that.images);case _:
+return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biography,_that.work,_that.connections,_that.images);case _:
   return null;
 
 }
@@ -250,7 +270,7 @@ return $default(_that.id,_that.name,_that.powerstats,_that.appearance,_that.biog
 @JsonSerializable()
 
 class _HeroModel implements HeroModel {
-  const _HeroModel({required this.id, required this.name, required this.powerstats, required this.appearance, required this.biography, required this.images});
+  const _HeroModel({required this.id, required this.name, required this.powerstats, required this.appearance, required this.biography, required this.work, required this.connections, required this.images});
   factory _HeroModel.fromJson(Map<String, dynamic> json) => _$HeroModelFromJson(json);
 
 @override final  String id;
@@ -258,6 +278,8 @@ class _HeroModel implements HeroModel {
 @override final  PowerstatsModel powerstats;
 @override final  AppearanceModel appearance;
 @override final  BiographyModel biography;
+@override final  WorkModel work;
+@override final  ConnectionsModel connections;
 @override final  HeroImagesModel images;
 
 /// Create a copy of HeroModel
@@ -273,16 +295,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HeroModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.powerstats, powerstats) || other.powerstats == powerstats)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.biography, biography) || other.biography == biography)&&(identical(other.images, images) || other.images == images));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HeroModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.powerstats, powerstats) || other.powerstats == powerstats)&&(identical(other.appearance, appearance) || other.appearance == appearance)&&(identical(other.biography, biography) || other.biography == biography)&&(identical(other.work, work) || other.work == work)&&(identical(other.connections, connections) || other.connections == connections)&&(identical(other.images, images) || other.images == images));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,powerstats,appearance,biography,images);
+int get hashCode => Object.hash(runtimeType,id,name,powerstats,appearance,biography,work,connections,images);
 
 @override
 String toString() {
-  return 'HeroModel(id: $id, name: $name, powerstats: $powerstats, appearance: $appearance, biography: $biography, images: $images)';
+  return 'HeroModel(id: $id, name: $name, powerstats: $powerstats, appearance: $appearance, biography: $biography, work: $work, connections: $connections, images: $images)';
 }
 
 
@@ -293,11 +315,11 @@ abstract mixin class _$HeroModelCopyWith<$Res> implements $HeroModelCopyWith<$Re
   factory _$HeroModelCopyWith(_HeroModel value, $Res Function(_HeroModel) _then) = __$HeroModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, PowerstatsModel powerstats, AppearanceModel appearance, BiographyModel biography, HeroImagesModel images
+ String id, String name, PowerstatsModel powerstats, AppearanceModel appearance, BiographyModel biography, WorkModel work, ConnectionsModel connections, HeroImagesModel images
 });
 
 
-@override $PowerstatsModelCopyWith<$Res> get powerstats;@override $AppearanceModelCopyWith<$Res> get appearance;@override $BiographyModelCopyWith<$Res> get biography;@override $HeroImagesModelCopyWith<$Res> get images;
+@override $PowerstatsModelCopyWith<$Res> get powerstats;@override $AppearanceModelCopyWith<$Res> get appearance;@override $BiographyModelCopyWith<$Res> get biography;@override $WorkModelCopyWith<$Res> get work;@override $ConnectionsModelCopyWith<$Res> get connections;@override $HeroImagesModelCopyWith<$Res> get images;
 
 }
 /// @nodoc
@@ -310,14 +332,16 @@ class __$HeroModelCopyWithImpl<$Res>
 
 /// Create a copy of HeroModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? powerstats = null,Object? appearance = null,Object? biography = null,Object? images = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? powerstats = null,Object? appearance = null,Object? biography = null,Object? work = null,Object? connections = null,Object? images = null,}) {
   return _then(_HeroModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,powerstats: null == powerstats ? _self.powerstats : powerstats // ignore: cast_nullable_to_non_nullable
 as PowerstatsModel,appearance: null == appearance ? _self.appearance : appearance // ignore: cast_nullable_to_non_nullable
 as AppearanceModel,biography: null == biography ? _self.biography : biography // ignore: cast_nullable_to_non_nullable
-as BiographyModel,images: null == images ? _self.images : images // ignore: cast_nullable_to_non_nullable
+as BiographyModel,work: null == work ? _self.work : work // ignore: cast_nullable_to_non_nullable
+as WorkModel,connections: null == connections ? _self.connections : connections // ignore: cast_nullable_to_non_nullable
+as ConnectionsModel,images: null == images ? _self.images : images // ignore: cast_nullable_to_non_nullable
 as HeroImagesModel,
   ));
 }
@@ -348,6 +372,24 @@ $BiographyModelCopyWith<$Res> get biography {
   
   return $BiographyModelCopyWith<$Res>(_self.biography, (value) {
     return _then(_self.copyWith(biography: value));
+  });
+}/// Create a copy of HeroModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WorkModelCopyWith<$Res> get work {
+  
+  return $WorkModelCopyWith<$Res>(_self.work, (value) {
+    return _then(_self.copyWith(work: value));
+  });
+}/// Create a copy of HeroModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ConnectionsModelCopyWith<$Res> get connections {
+  
+  return $ConnectionsModelCopyWith<$Res>(_self.connections, (value) {
+    return _then(_self.copyWith(connections: value));
   });
 }/// Create a copy of HeroModel
 /// with the given fields replaced by the non-null parameter values.

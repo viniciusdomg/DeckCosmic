@@ -1,3 +1,5 @@
+import 'package:deck_cosmic/features/heroes/domain/entities/connections_entity.dart';
+import 'package:deck_cosmic/features/heroes/domain/entities/work_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:deck_cosmic/features/heroes/domain/entities/powerstats_entity.dart';
 import 'package:deck_cosmic/features/heroes/domain/entities/appearance_entity.dart';
@@ -14,6 +16,8 @@ abstract class HeroEntity with _$HeroEntity {
     required PowerstatsEntity powerstats,
     required AppearanceEntity appearance,
     required BiographyEntity biography,
+    required WorkEntity work,
+    required ConnectionsEntity connections,
     required HeroImagesEntity images,
   }) = _HeroEntity;
 }

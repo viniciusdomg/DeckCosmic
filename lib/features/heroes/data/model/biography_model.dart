@@ -8,6 +8,8 @@ part 'biography_model.g.dart';
 abstract class BiographyModel with _$BiographyModel {
   const factory BiographyModel({
     String? fullName,
+    String? placeOfBirth,
+    String? firstAppearance,
     String? publisher,
     String? alignment,
   }) = _BiographyModel;
@@ -20,6 +22,8 @@ extension BiographyModelX on BiographyModel {
   BiographyEntity toEntity() {
     return BiographyEntity(
       fullName: fullName ?? '-',
+      placeOfBirth: placeOfBirth ?? 'N/A',
+      firstAppearance: firstAppearance ?? 'N/A',
       publisher: publisher ?? 'N/A',
       alignment: alignment ?? '-',
     );
