@@ -5,7 +5,6 @@ import 'package:deck_cosmic/core/error/exceptions.dart';
 import 'hero_remote_datasource.dart';
 
 
-// 2. A implementação real que usa o Dio
 class HeroRemoteDataSourceImpl implements IHeroRemoteDataSource {
   final Dio dio;
 
@@ -16,7 +15,7 @@ class HeroRemoteDataSourceImpl implements IHeroRemoteDataSource {
   @override
   Future<List<HeroModel>> getAllHeroes({required int page, required int limit}) async {
     try {
-      final String url = '$_endpoint?_page=${page}_per_page=$limit';
+      final String url = '$_endpoint?_page=$page&_per_page=$limit';
 
       final response = await dio.get(url);
 
