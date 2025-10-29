@@ -29,6 +29,24 @@ class MyApp extends StatelessWidget {
         theme: theme.light(),
         darkTheme: theme.dark(),
         home: const MainNavigation(initialIndex: 1),
+        builder: (context, child) {
+          return Stack(
+            children: [
+              Opacity(
+                opacity: 0.3,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/comic_background.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              child ?? Container(),
+            ],
+          );
+        },
       ),
     );
   }

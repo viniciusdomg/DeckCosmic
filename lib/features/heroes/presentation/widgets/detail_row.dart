@@ -21,13 +21,19 @@ class DetailRow extends StatelessWidget {
         children: [
           Text(
             '$title:',
-            style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+            style: textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
           const SizedBox(width: 16),
           Expanded(
             child: Text(
               displayValue,
-              style: textTheme.bodyLarge,
+              style: textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary.withOpacity(
+                  0.7),
+              ),
               textAlign: TextAlign.right,
             ),
           ),

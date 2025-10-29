@@ -39,7 +39,9 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("DeckCosmic"),
+        title: Center(
+         child: Text("DeckCosmic"),
+        ),
       ),
       
       body: IndexedStack(

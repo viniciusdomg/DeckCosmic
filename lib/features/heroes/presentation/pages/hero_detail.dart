@@ -69,15 +69,15 @@ class HeroDetail extends StatelessWidget {
               Card(
                 elevation: 10,
                 margin: const EdgeInsets.only(
-                    top: 16.0), // Margem superior para AppBar transparente
+                    top: 16.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                   side: BorderSide(
                       color: Theme.of(context).colorScheme.primary,
-                      width: 3), // Borda colorida
+                      width: 3), 
                 ),
                 clipBehavior:
-                    Clip.antiAlias, // Para a imagem respeitar o borderRadius
+                    Clip.antiAlias, 
                 child: Column(children: [
                   BuildImageLarge(
                     hero: hero,
@@ -165,7 +165,10 @@ class HeroDetail extends StatelessWidget {
               const SizedBox(height: 24),
               Text(
                 'Appearance',
-                style: textTheme.titleLarge?.copyWith(fontFamily: 'Bangers'),
+                style: textTheme.titleLarge?.copyWith(
+                    fontFamily: 'Bangers',
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
               ),
               const Divider(),
               DetailRow(title: 'Gender', value: hero.appearance.gender),

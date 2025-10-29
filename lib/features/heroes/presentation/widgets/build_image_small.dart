@@ -11,7 +11,7 @@ class BuildImageSmall extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: hero.images.sm,
       width: 110,
-      height: 170,
+      height: 180,
       fit: BoxFit.cover,
       placeholder: (context, url) => Container(
         width: 110,
