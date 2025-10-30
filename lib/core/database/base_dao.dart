@@ -42,7 +42,7 @@ abstract class BaseDao{
     batch.execute(
       '''
       CREATE TABLE ${Contratos.myCardsTable}(
-         ${Contratos.myCardsIdColumn} INTEGER PRIMARY KEY,
+         ${Contratos.myCardsIdColumn} INTEGER PRIMARY KEY AUTOINCREMENT,
          ${Contratos.myCardsHeroIdColumn} TEXT NOT NULL,
          ${Contratos.myCardsDataObtencaoColumn} INTEGER NOT NULL,
          ${Contratos.myCardsDataObtencaoFormatColumn} TEXT NOT NULL,

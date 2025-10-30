@@ -1,4 +1,5 @@
 import 'package:deck_cosmic/features/heroes/presentation/widgets/build_image_large.dart';
+import 'package:deck_cosmic/features/heroes/presentation/widgets/build_power_stats_bar.dart';
 import 'package:deck_cosmic/features/heroes/presentation/widgets/detail_row.dart';
 import 'package:deck_cosmic/features/heroes/presentation/widgets/stats_bar.dart';
 import 'package:flutter/material.dart';
@@ -116,47 +117,7 @@ class HeroDetail extends StatelessWidget {
                           ),
                         ),
                         const Divider(),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  StatsBar(
-                                      name: 'Intelligence',
-                                      value: hero.powerstats.intelligence,
-                                      color: Colors.blue),
-                                  StatsBar(
-                                      name: 'Strength',
-                                      value: hero.powerstats.strength,
-                                      color: Colors.red),
-                                  StatsBar(
-                                      name: 'Speed',
-                                      value: hero.powerstats.speed,
-                                      color: Colors.green),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  StatsBar(
-                                      name: 'Durability',
-                                      value: hero.powerstats.durability,
-                                      color: Colors.grey),
-                                  StatsBar(
-                                      name: 'Power',
-                                      value: hero.powerstats.power,
-                                      color: Colors.purple),
-                                  StatsBar(
-                                      name: 'Combat',
-                                      value: hero.powerstats.combat,
-                                      color: Colors.orange),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        BuildPowerStatsBar(hero: hero),
                       ],
                     ),
                   ),

@@ -42,4 +42,61 @@ class HeroRepositoryImpl implements IHeroRepository {
       }
     }
   }
+
+  @override
+  Future<HeroEntity?> getHeroById(int heroId) async {
+    final heroModel = await localDataSource.getHeroById(heroId);
+    if (heroModel != null) {
+      return heroModel.toEntity();
+    }
+
+    return null;
+  }
+
+  @override
+  Future<void> addHeroToMyCards(String heroId) async {
+    if(heroId.isEmpty) return;
+
+    await localDataSource.addHeroToMyCards(heroId);
+  }
+
+  @override
+  Future<List<int>> getAllHeroIds() async {
+    return await localDataSource.getAllHeroIds();
+  }
+
+  @override
+  Future<List<HeroEntity>> getMyCards() async {
+    final heroModels = await localDataSource.getMyCards();
+    if(heroModels.isEmpty) return [];
+
+    return heroModels.map((model) => model.toEntity()).toList();
+  }
+
+  @override
+  Future<int> getMyCardsCount() async {
+    return await localDataSource.getMyCardsCount();
+  }
+
+  @override
+  Future<void> removeHeroFromMyCards(int myCardId, String heroId) async {
+    if(heroId.isEmpty) return;
+
+    return await localDataSource.removeHeroFromMyCards(heroId);
+  }
+
+  @override
+  Future<Map<String, dynamic>> getDailyCardStatus() async {
+    return await localDataSource.getDailyCardStatus();
+  }
+
+  @override
+  Future<void> setDailyCardStatus(int heroId, String date, bool hasCollected) async {
+    return await localDataSource.setDailyCardStatus(heroId, date, hasCollected);
+  }
+
+  @override
+  Future<void> setHasCollected(bool hasCollected) async {
+    return await localDataSource.setHasCollected(hasCollected);
+  }
 }

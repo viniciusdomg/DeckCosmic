@@ -2,11 +2,13 @@ import 'package:deck_cosmic/features/heroes/domain/entities/hero_entity.dart';
 import 'package:deck_cosmic/features/heroes/presentation/pages/hero_detail.dart';
 import 'package:deck_cosmic/features/heroes/presentation/widgets/build_image_small.dart';
 import 'package:deck_cosmic/features/heroes/presentation/widgets/build_power_stats_row.dart';
+import 'package:deck_cosmic/features/my_cards/presentation/pages/my_hero_detail.dart';
 import 'package:flutter/material.dart';
 
 class HeroCard extends StatelessWidget {
   final HeroEntity hero;
-  const HeroCard({super.key, required this.hero});
+  final String route;
+  const HeroCard({super.key, required this.hero, this.route = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class HeroCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HeroDetail(hero: hero),
+                builder: (context) => route == 'myHeroDetail' ? MyHeroDetail(hero: hero,) : HeroDetail(hero: hero),
               ),
             );
           },

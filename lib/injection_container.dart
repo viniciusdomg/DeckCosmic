@@ -1,31 +1,43 @@
+import 'package:deck_cosmic/features/battle/presentation/provider/battlefield_notifier.dart';
+import 'package:deck_cosmic/features/daily_card/presentation/provider/daily_card_notifier.dart';
+import 'package:deck_cosmic/features/my_cards/presentation/provider/my_cards_notifier.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:deck_cosmic/features/heroes/data/datasources/hero_local_datasource.dart';
 import 'package:deck_cosmic/features/heroes/data/datasources/hero_remote_datasource.dart';
 import 'package:deck_cosmic/features/heroes/data/datasources/hero_remote_datasource_impl.dart';
 import 'package:deck_cosmic/features/heroes/data/repository/hero_repository_impl.dart';
 import 'package:deck_cosmic/features/heroes/domain/repository/hero_repository.dart';
 import 'package:deck_cosmic/features/heroes/presentation/providers/hero_list_notifier.dart';
-
 import 'features/heroes/data/datasources/hero_local_datasource_impl.dart';
 
-// (Importe aqui a implementação do seu IHeroLocalDataSource quando a criar)
-// import 'package:deck_cosmic/features/heroes/data/datasources/hero_local_datasource_impl.dart';
 
 final getIt = GetIt.instance;
 
-void setupLocator() {
+Future<void> setupLocator() async {
   // 1. STATE (Presentation)
   // Notifiers são registrados como 'factory' porque o Provider
   // vai cuidar do ciclo de vida deles (criar e dar dispose).
   getIt.registerFactory(
-        () => HeroListNotifier(heroRepository: getIt()),
+        () => HeroListNotifier(repository: getIt()),
   );
-  // (Registre seus outros notifiers aqui: DailyCardNotifier, MyCardsNotifier...)
+
+  getIt.registerFactory(
+        () => DailyCardNotifier(repository: getIt()),
+  );
+
+  getIt.registerFactory(
+        () => BattlefieldNotifier(repository: getIt()),
+  );
+
+  getIt.registerFactory(
+      () => MyCardsNotifier(repository: getIt()),
+  );
+
 
   // 2. REPOSITORIES (Domain/Data)
-  // Registramos a implementação (Impl) usando a interface (IHeroRepository)
-  // como "tipo". Isso é Inversão de Dependência (o 'D' do SOLID).
+  // Inversão de Dependência
   getIt.registerLazySingleton<IHeroRepository>(
         () => HeroRepositoryImpl(
       remoteDataSource: getIt(),
@@ -33,14 +45,13 @@ void setupLocator() {
     ),
   );
 
-
   // 3. DATASOURCES (Data)
   getIt.registerLazySingleton<IHeroRemoteDataSource>(
         () => HeroRemoteDataSourceImpl(dio: getIt()),
   );
 
   getIt.registerLazySingleton<IHeroLocalDataSource>(
-        () => HeroLocalDataSourceImpl(),
+        () => HeroLocalDataSourceImpl(sharedPreferences: getIt()),
   );
 
 
@@ -50,4 +61,7 @@ void setupLocator() {
       baseUrl: 'http://10.0.2.2:3000',
     )),
   );
+
+  final sharedPreferences = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 }

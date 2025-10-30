@@ -2,7 +2,13 @@ import 'package:deck_cosmic/features/battle/presentation/pages/battlefield.dart'
 import 'package:deck_cosmic/features/daily_card/presentation/pages/hero_day.dart';
 import 'package:deck_cosmic/features/heroes/presentation/pages/heroes_list.dart';
 import 'package:deck_cosmic/features/my_cards/presentation/pages/my_heroes_list.dart';
+import 'package:deck_cosmic/features/battle/presentation/provider/battlefield_notifier.dart';
+import 'package:deck_cosmic/features/my_cards/presentation/provider/my_cards_notifier.dart';
+import 'package:deck_cosmic/features/daily_card/presentation/provider/daily_card_notifier.dart';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 class MainNavigation extends StatefulWidget {
   final int initialIndex;
@@ -29,6 +35,18 @@ class _MainNavigationState extends State<MainNavigation> {
   }
 
   void _onItemTapped(int index){
+    if (index == 1) {
+      Provider.of<DailyCardNotifier>(context, listen: false).loadDailyHero();
+    }
+
+    if (index == 2) {
+      Provider.of<MyCardsNotifier>(context, listen: false).loadCards();
+    }
+
+    if (index == 3) {
+      Provider.of<BattlefieldNotifier>(context, listen: false).loadAndShuffleCards();
+    }
+
     setState(() {
       _selectedIndex = index;
     });

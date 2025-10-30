@@ -3,9 +3,9 @@ import 'package:deck_cosmic/features/heroes/domain/entities/hero_entity.dart';
 import 'package:deck_cosmic/features/heroes/domain/repository/hero_repository.dart';
 
 class HeroListNotifier extends ChangeNotifier {
-  final IHeroRepository heroRepository;
+  final IHeroRepository repository;
 
-  HeroListNotifier({required this.heroRepository});
+  HeroListNotifier({required this.repository});
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
