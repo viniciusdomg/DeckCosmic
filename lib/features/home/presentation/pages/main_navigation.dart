@@ -50,6 +50,7 @@ class _MainNavigationState extends State<MainNavigation> {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.shield),

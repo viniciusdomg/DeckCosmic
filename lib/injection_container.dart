@@ -1,4 +1,3 @@
-import 'package:deck_cosmic/features/heroes/data/model/hero_model.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:deck_cosmic/features/heroes/data/datasources/hero_local_datasource.dart';
@@ -7,6 +6,8 @@ import 'package:deck_cosmic/features/heroes/data/datasources/hero_remote_datasou
 import 'package:deck_cosmic/features/heroes/data/repository/hero_repository_impl.dart';
 import 'package:deck_cosmic/features/heroes/domain/repository/hero_repository.dart';
 import 'package:deck_cosmic/features/heroes/presentation/providers/hero_list_notifier.dart';
+
+import 'features/heroes/data/datasources/hero_local_datasource_impl.dart';
 
 // (Importe aqui a implementação do seu IHeroLocalDataSource quando a criar)
 // import 'package:deck_cosmic/features/heroes/data/datasources/hero_local_datasource_impl.dart';
@@ -32,37 +33,21 @@ void setupLocator() {
     ),
   );
 
+
   // 3. DATASOURCES (Data)
   getIt.registerLazySingleton<IHeroRemoteDataSource>(
         () => HeroRemoteDataSourceImpl(dio: getIt()),
   );
 
-  // TODO: Substituir este 'Mock' pela sua implementação real do SQFlite
-  // Por enquanto, vamos registrar um "Mock" para não quebrar o app.
   getIt.registerLazySingleton<IHeroLocalDataSource>(
-        () => MockHeroLocalDataSourceImpl(),
+        () => HeroLocalDataSourceImpl(),
   );
 
 
+  // 4. EXTERNAL
   getIt.registerLazySingleton<Dio>(
         () => Dio(BaseOptions(
       baseUrl: 'http://10.0.2.2:3000',
     )),
   );
-}
-
-// TODO: Pode apagar esta classe mock depois
-// Classe temporária apenas para o getIt não falhar
-class MockHeroLocalDataSourceImpl implements IHeroLocalDataSource {
-  @override
-  Future<void> cacheHeroList(List heroesToCache) async {
-    // Não faz nada
-  }
-
-  @override
-  Future<List<HeroModel>?> getLastHeroList() async {
-    return [];
-  }
-
-
 }

@@ -8,7 +8,6 @@ import 'package:deck_cosmic/core/error/exceptions.dart';
 class HeroRepositoryImpl implements IHeroRepository {
   final IHeroRemoteDataSource remoteDataSource;
   final IHeroLocalDataSource localDataSource;
-  // (Você vai adicionar o LocalDataSource aqui depois)
 
   HeroRepositoryImpl({
     required this.remoteDataSource,
@@ -18,24 +17,28 @@ class HeroRepositoryImpl implements IHeroRepository {
   @override
   Future<List<HeroEntity>> getAllHeroes({required int page, required int limit}) async {
     try {
+      print("entrando no try");
       final heroModels = await remoteDataSource.getAllHeroes(page: page, limit: limit);
+      print("chegando na busca da api por herois ${heroModels.length}");
 
-      // 2. Se conseguir, salva no cache local (SQFlite)
-      // (Implementaremos o localDataSource depois, mas a chamada já fica aqui)
-      // await localDataSource.cacheHeroList(heroModels);
+      // Não precisamos "esperar" por isso para mostrar na tela;
+      await localDataSource.cacheHeroList(heroModels);
 
-      // 3. Traduz os Modelos (sujos) para Entidades (limpas) e retorna
       return heroModels.map((model) => model.toEntity()).toList();
 
     } on ServerException {
-      // 4. Se a API falhar (ex: sem internet)...
       try {
-        // ...tenta buscar do cache (Local)
-        final localHeroModels = await localDataSource.getLastHeroList();
-        if(localHeroModels == null) throw CacheException('Falha ao buscar dados. Sem cache local.');
+
+        final localHeroModels = await localDataSource.getLastHeroList(page: page, limit: limit);
+        print("chegando na listagem do banco");
+        if(localHeroModels == null || localHeroModels.isEmpty) {
+          throw CacheException('Sem conexão e sem cache local disponível.');
+        }
+
         return localHeroModels.map((model) => model.toEntity()).toList();
-      } on CacheException {
-        throw Exception('Falha ao buscar dados. Sem cache local.');
+      } on CacheException catch (e) {
+        print("chegando nesse print ${e.message}");
+        throw Exception(e.message);
       }
     }
   }

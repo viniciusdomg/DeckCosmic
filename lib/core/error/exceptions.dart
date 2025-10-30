@@ -1,22 +1,19 @@
-class ServerException<From, To> implements Exception{
-
-  String message;
-
+class ServerException implements Exception{
+  final String message;
   ServerException(this.message);
 
   @override
   String toString() {
-    return "Erro ao mapear de ${From} para ${To}: ${message}";
+    return "ServerException: $message";
   }
 }
 
-class CacheException<From, To> implements Exception{
-  String message;
-
+class CacheException implements Exception{
+  final String message;
   CacheException(this.message);
 
   @override
   String toString() {
-    return "Erro ao mapear de ${From} para ${To}: ${message}";
+    return "CacheException: $message";
   }
 }
