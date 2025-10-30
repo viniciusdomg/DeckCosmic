@@ -25,7 +25,6 @@ class HeroRemoteDataSourceImpl implements IHeroRemoteDataSource {
         final heroModels = jsonList
             .map((json) => HeroModel.fromJson(json as Map<String, dynamic>))
             .toList();
-        print("parseando valores para model");
 
         return heroModels;
       } else {

@@ -17,11 +17,8 @@ class HeroRepositoryImpl implements IHeroRepository {
   @override
   Future<List<HeroEntity>> getAllHeroes({required int page, required int limit}) async {
     try {
-      print("entrando no try");
       final heroModels = await remoteDataSource.getAllHeroes(page: page, limit: limit);
-      print("chegando na busca da api por herois ${heroModels.length}");
 
-      // Não precisamos "esperar" por isso para mostrar na tela;
       await localDataSource.cacheHeroList(heroModels);
 
       return heroModels.map((model) => model.toEntity()).toList();
@@ -30,14 +27,12 @@ class HeroRepositoryImpl implements IHeroRepository {
       try {
 
         final localHeroModels = await localDataSource.getLastHeroList(page: page, limit: limit);
-        print("chegando na listagem do banco");
         if(localHeroModels == null || localHeroModels.isEmpty) {
           throw CacheException('Sem conexão e sem cache local disponível.');
         }
 
         return localHeroModels.map((model) => model.toEntity()).toList();
       } on CacheException catch (e) {
-        print("chegando nesse print ${e.message}");
         throw Exception(e.message);
       }
     }

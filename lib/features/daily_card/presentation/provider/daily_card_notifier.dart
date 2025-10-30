@@ -41,7 +41,6 @@ class DailyCardNotifier extends ChangeNotifier {
       int? heroId = status['heroId'];
 
       if (lastDate == today && heroId != null) {
-          print("Entrando aqui");
           _hasCollected = status['hasCollected'];
 
       } else {
@@ -76,7 +75,6 @@ class DailyCardNotifier extends ChangeNotifier {
 
     try {
       final count = await repository.getMyCardsCount();
-      print("contagem do herois $count");
       if (count >= 15) {
         return 'Sua coleção está cheia (Limite de 15 cartas).';
       }
