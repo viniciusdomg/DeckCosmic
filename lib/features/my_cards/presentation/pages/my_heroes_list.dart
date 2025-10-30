@@ -14,7 +14,6 @@ class _MyHeroesListState extends State<MyHeroesList> {
   @override
   void initState() {
     super.initState();
-    // Carrega as cartas ao entrar na tela
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<MyCardsNotifier>(context, listen: false).loadCards();
     });
@@ -25,11 +24,6 @@ class _MyHeroesListState extends State<MyHeroesList> {
     final notifier = context.watch<MyCardsNotifier>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Minhas Cartas'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       extendBodyBehindAppBar: true,
       body: Container(
         child: _buildBody(context, notifier),
@@ -53,7 +47,7 @@ class _MyHeroesListState extends State<MyHeroesList> {
         );
       case MyCardsState.loaded:
         return ListView.builder(
-          padding: const EdgeInsets.only(top: kToolbarHeight + 20, left: 8, right: 8),
+          padding: const EdgeInsets.only(top: 30, left: 8, right: 8),
           itemCount: notifier.cards.length,
           itemBuilder: (context, index) {
             final hero = notifier.cards[index];

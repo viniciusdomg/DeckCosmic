@@ -59,6 +59,9 @@ Future<void> setupLocator() async {
   getIt.registerLazySingleton<Dio>(
         () => Dio(BaseOptions(
       baseUrl: 'http://10.0.2.2:3000',
+      connectTimeout: const Duration(seconds: 30),
+
+      receiveTimeout: const Duration(seconds: 30),
     )),
   );
 

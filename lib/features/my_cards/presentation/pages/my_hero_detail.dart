@@ -1,4 +1,5 @@
 import 'package:deck_cosmic/features/heroes/presentation/pages/hero_detail.dart';
+import 'package:deck_cosmic/features/heroes/presentation/widgets/hero_detail_body.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -22,14 +23,12 @@ class MyHeroDetail extends StatelessWidget {
       btnOkText: 'Abandonar',
       btnCancelOnPress: () {},
       btnOkOnPress: () async {
-        // Pega o notifier (listen: false) para *apenas chamar* a função
+
         final notifier = Provider.of<MyCardsNotifier>(context, listen: false);
         final bool success = await notifier.removeCard(hero.id);
 
-        // Fecha a tela de detalhes
         Navigator.of(context).pop();
 
-        // Feedback (opcional, pois a lista já atualiza)
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(success ? 'Carta abandonada.' : 'Erro ao abandonar.'),
@@ -42,20 +41,19 @@ class MyHeroDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Esta tela não precisa "ouvir" mudanças, apenas exibir os dados do herói
     return Scaffold(
       appBar: AppBar(
         title: Text(hero.name),
-        backgroundColor: Colors.transparent,
+
         elevation: 0,
       ),
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: kToolbarHeight + 20, left: 16, right: 16, bottom: 16),
+        padding: const EdgeInsets.only(top: kToolbarHeight + 50, left: 16, right: 16, bottom: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeroDetail(hero: hero),
+            HeroDetailBody(hero: hero),
             const SizedBox(height: 32),
             Center(
               child: ElevatedButton.icon(
